@@ -1,4 +1,4 @@
-const { name: packageName, version: packageVersion } = require(require("path").join(__dirname, "..", "package.json"));
+const { name: packageName, version: packageVersion } = require("../package.json");
 const G: any = global || window || {};
 const PACKAGE_GUARD: symbol = Symbol.for(packageName);
 if (PACKAGE_GUARD in G) {
@@ -13,8 +13,6 @@ if (PACKAGE_GUARD in G) {
 } else {
 	G[PACKAGE_GUARD] = packageVersion;
 }
-
-import * as zxteam from "@zxteam/contract";
 
 export * from "./AggregateError";
 export * from "./ArgumentError";
