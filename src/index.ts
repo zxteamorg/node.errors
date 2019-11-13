@@ -16,16 +16,8 @@ if (PACKAGE_GUARD in G) {
 
 export * from "./AggregateError";
 export * from "./ArgumentError";
+export * from "./InnerError";
 export * from "./CancelledError";
 export * from "./InvalidOperationError";
 
-export function wrapErrorIfNeeded(likeError: any): Error {
-	if (likeError) {
-		if (likeError instanceof Error) {
-			return likeError;
-		} else {
-			return new Error(likeError.toString());
-		}
-	}
-	return new Error();
-}
+export * from "./wrapErrorIfNeeded";

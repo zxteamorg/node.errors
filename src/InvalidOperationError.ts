@@ -1,2 +1,4 @@
-export class InvalidOperationError extends Error {
+import { InnerError } from "./InnerError";
+
+export class InvalidOperationError extends InnerError {
 }
