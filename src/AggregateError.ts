@@ -2,14 +2,20 @@ export class AggregateError extends Error {
 	public readonly innerError: Error | null;
 	public readonly innerErrors: ReadonlyArray<Error>;
 	public constructor(innerErrors: ReadonlyArray<Error>) {
-		super(innerErrors && innerErrors.length > 0 ? innerErrors[0].message : "AggregateError");
+		let friendlyInnerError: Error | null;
+		let friendlyInnerErrors: Array<Error>;
 		if (innerErrors) {
-			this.innerError = innerErrors.length > 0 ? innerErrors[0] : null;
-			this.innerErrors = innerErrors.slice();
+			friendlyInnerErrors = [...innerErrors].reverse();
+			friendlyInnerError = friendlyInnerErrors.length > 0 ? friendlyInnerErrors[0] : null;
 		} else {
-			this.innerError = null;
-			this.innerErrors = [];
+			friendlyInnerErrors = [];
+			friendlyInnerError = null;
 		}
+
+		super(friendlyInnerError !== null ? friendlyInnerError.message : "AggregateError");
+
+		this.innerErrors = friendlyInnerErrors;
+		this.innerError = friendlyInnerError;
 	}
 
 	public toString(): string {
