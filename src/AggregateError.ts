@@ -5,7 +5,7 @@ export class AggregateError extends Error {
 		let friendlyInnerError: Error | null;
 		let friendlyInnerErrors: Array<Error>;
 		if (innerErrors) {
-			friendlyInnerErrors = [...innerErrors].reverse();
+			friendlyInnerErrors = [...innerErrors];
 			friendlyInnerError = friendlyInnerErrors.length > 0 ? friendlyInnerErrors[0] : null;
 		} else {
 			friendlyInnerErrors = [];

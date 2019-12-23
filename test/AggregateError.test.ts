@@ -24,7 +24,7 @@ describe("AggregateError test", function () {
 
 		const aggrError = new AggregateError([err1, err2, err3]);
 
-		assert.equal(aggrError.message, "Err3");
-		assert.equal(aggrError.toString(), `${err3.toString()}\n${err2.toString()}\n${err1.toString()}`);
+		assert.equal(aggrError.message, "Err1");
+		assert.equal(aggrError.toString(), `${err1.toString()}\n${err2.toString()}\n${err3.toString()}`);
 	});
 });
