@@ -14,10 +14,11 @@ if (PACKAGE_GUARD in G) {
 	G[PACKAGE_GUARD] = packageVersion;
 }
 
-export * from "./AggregateError";
-export * from "./ArgumentError";
-export * from "./InnerError";
-export * from "./CancelledError";
-export * from "./InvalidOperationError";
+export { AggregateError } from "./AggregateError";
+export { ArgumentError } from "./ArgumentError";
+export { InnerError } from "./InnerError";
+export { CancelledError } from "./CancelledError";
+export { ConfigurationError } from "./ConfigurationError";
+export { InvalidOperationError } from "./InvalidOperationError";
 
-export * from "./wrapErrorIfNeeded";
+export { wrapErrorIfNeeded } from "./wrapErrorIfNeeded";
