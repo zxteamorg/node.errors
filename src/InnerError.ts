@@ -7,6 +7,7 @@ export class InnerError extends Error {
 	public constructor(message: string);
 	public constructor(message: string, innerError: any);
 	public constructor(message: string, innerError: Error);
+	public constructor(innerError: Error);
 
 	public constructor(message?: any, inner?: any) {
 		if (message === undefined) {
