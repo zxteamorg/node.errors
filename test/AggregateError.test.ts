@@ -3,12 +3,18 @@ import { AggregateError } from "../src/index";
 import { assert } from "chai";
 
 describe("AggregateError test", function () {
-	it("should be instntable without inner errors", function () {
-		const aggrError = new (AggregateError as any)();
-		assert.equal(aggrError.message, AggregateError.name);
+	it("should NOT be instantable without inner errors", function () {
+		let expectedErr!: Error;
+		try {
+			// tslint:disable-next-line: no-unused-expression
+			new (AggregateError as any)();
+		} catch (e) {
+			expectedErr = e;
+		}
+		assert.isDefined(expectedErr);
 	});
 
-	it("should be instntable without inner errors", function () {
+	it("should be instantable without inner errors", function () {
 		const aggrError = new AggregateError([]);
 		assert.equal(aggrError.message, AggregateError.name);
 	});
@@ -24,7 +30,7 @@ describe("AggregateError test", function () {
 
 		const aggrError = new AggregateError([err1, err2, err3]);
 
-		assert.equal(aggrError.message, "Err1");
+		assert.equal(aggrError.message, "Err1\nErr2\nErr3");
 		assert.equal(aggrError.toString(), `${err1.toString()}\n${err2.toString()}\n${err3.toString()}`);
 	});
 });
