@@ -1,6 +1,6 @@
 {
 	"name": "@zxteam/errors",
-	"version": "6.0.57",
+	"version": "6.0.61",
 	"description": "ZXTeam's Common Errors",
 	"author": {
 		"name": "ZXTeam",
@@ -20,10 +20,10 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@zxteam/contract": "^6.0.56"
+		"@zxteam/contract": "^6.0.60"
 	},
 	"devDependencies": {
-		"@types/node": "^11.15.7",
+		"@types/node": "^11.15.12",
 		"@zxnode/build": "^0.0.34"
 	},
 	"engines": {

@@ -1,21 +1,24 @@
-export class AggregateError extends Error {
-	public readonly innerError: Error | null;
+import { InnerError } from "./InnerError";
+
+export class AggregateError extends InnerError {
 	public readonly innerErrors: ReadonlyArray<Error>;
 	public constructor(innerErrors: ReadonlyArray<Error>) {
 		let friendlyInnerError: Error | null;
 		let friendlyInnerErrors: Array<Error>;
-		if (innerErrors) {
+		let friendlyMessage: string;
+		if (innerErrors.length > 0) {
 			friendlyInnerErrors = [...innerErrors];
 			friendlyInnerError = friendlyInnerErrors.length > 0 ? friendlyInnerErrors[0] : null;
+			friendlyMessage = innerErrors.map(e => e.message).join("\n");
 		} else {
 			friendlyInnerErrors = [];
 			friendlyInnerError = null;
+			friendlyMessage = "AggregateError";
 		}
 
-		super(friendlyInnerError !== null ? friendlyInnerError.message : "AggregateError");
+		super(friendlyMessage, friendlyInnerError);
 
 		this.innerErrors = friendlyInnerErrors;
-		this.innerError = friendlyInnerError;
 	}
 
 	public toString(): string {
