@@ -1,3 +1,7 @@
+# DEPRECATED
+
+The project has been moved to https://github.com/freemework/common/tree/src-typescript
+
 # ZXTeam's Common Errors
 [![npm version badge](https://img.shields.io/npm/v/@zxteam/errors.svg)](https://www.npmjs.com/package/@zxteam/errors)
 [![downloads badge](https://img.shields.io/npm/dm/@zxteam/errors.svg)](https://www.npmjs.org/package/@zxteam/errors)
